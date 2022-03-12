@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <bean id="user" name="user,user2" class="com.markus.spring.ioc.container.domain.User">
+       <property name="name" value="markus"/>
+       <property name="age" value="23"/>
+   </bean>
+
+    <bean id="superUser" class="com.markus.spring.ioc.container.domain.SuperUser" parent="user" primary="true">
+        <property name="address" value="北京市朝阳区"/>
+    </bean>
+
+    <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+        <property name="targetBeanName" value="user"/>
+    </bean>
+
+</beans>
