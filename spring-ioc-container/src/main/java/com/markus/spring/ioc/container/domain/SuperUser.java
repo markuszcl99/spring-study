@@ -20,6 +20,14 @@ public class SuperUser extends User{
         this.address = address;
     }
 
+    public static SuperUser createSuperUser(){
+        SuperUser superUser = new SuperUser();
+        superUser.setAge(20);
+        superUser.setName("Markus");
+        superUser.setAddress("北京");
+        return superUser;
+    }
+
     @Override
     public String toString() {
         return "SuperUser{" +
