@@ -38,6 +38,7 @@ public class User {
     }
 
     public static User createUser(){
+        System.out.println("我被创建了...");
         User user = new User();
         user.setAge(23);
         user.setName("Markus");

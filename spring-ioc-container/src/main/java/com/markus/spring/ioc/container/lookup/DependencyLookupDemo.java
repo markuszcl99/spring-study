@@ -58,6 +58,8 @@ public class DependencyLookupDemo {
 
     private static void lookupByNameLazy(BeanFactory beanFactory) {
         ObjectFactory<User> objectFactory = (ObjectFactory<User>) beanFactory.getBean("objectFactory");
+        ObjectFactory<User> objectFactory1 = (ObjectFactory<User>) beanFactory.getBean("objectFactory");
+        System.out.println("objectFactory == objectFactory1 ? "+(objectFactory1==objectFactory));
         User user = objectFactory.getObject();
         System.out.println("根据名称延迟查找："+user);
     }
