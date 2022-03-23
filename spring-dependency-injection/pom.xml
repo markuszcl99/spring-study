@@ -23,5 +23,11 @@
             <artifactId>spring-ioc-container</artifactId>
             <version>${container.version}</version>
         </dependency>
+        <!-- JSR 303 API -->
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
     </dependencies>
 </project>

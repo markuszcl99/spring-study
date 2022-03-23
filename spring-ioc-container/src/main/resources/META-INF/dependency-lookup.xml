@@ -6,6 +6,10 @@
    <bean id="user" name="user,user2" class="com.markus.spring.ioc.container.domain.User">
        <property name="name" value="markus"/>
        <property name="age" value="23"/>
+       <property name="city" value="BEIJING"/>
+       <property name="workCities" value="BEIJING,HEZE"/>
+       <property name="lifeCities" value="BEIJING,HEZE"/>
+       <property name="resource" value="classpath:/META-INF/user-config.properties"/>
    </bean>
 
     <bean id="superUser" class="com.markus.spring.ioc.container.domain.SuperUser" parent="user" primary="true">
