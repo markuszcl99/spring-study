@@ -1,12 +1,16 @@
 package com.markus.spring.ioc.container.domain;
 
 import com.markus.spring.ioc.container.eunms.City;
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.core.io.Resource;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.Arrays;
 import java.util.List;
 
-public class User {
+public class User implements BeanNameAware {
+    private Long id;
     private Integer age;
     private String name;
     private City city;  // 枚举类型 ∈ 基础类型（标量类型）
@@ -14,12 +18,22 @@ public class User {
     private List<City> lifeCities;// 集合类型
     private Resource resource;// Spring类型 ∈ 基础类型
 
+    private transient String beanName;
+
     public User(){
-        System.out.println("我被初始化了...");
+//        System.out.println("我被初始化了...");
     }
     public User(int age,String name){
         this.age = age;
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getAge() {
@@ -73,7 +87,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "age=" + age +
+                "id=" + id +
+                ", age=" + age +
                 ", name='" + name + '\'' +
                 ", city=" + city +
                 ", workCities=" + Arrays.toString(workCities) +
@@ -95,5 +110,20 @@ public class User {
         user.setAge(age);
         user.setName(name);
         return user;
+    }
+
+    @PostConstruct
+    public void init(){
+        System.out.println("["+beanName+"] Bean 正在初始化...");
+    }
+
+    @PreDestroy
+    public void destroy(){
+        System.out.println("["+beanName+"] Bean 正在销毁...");
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        this.beanName = name;
     }
 }
