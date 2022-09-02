@@ -1,7 +1,9 @@
 package com.markus.spring.spring.bean.lifecycle.registry;
 
+import org.springframework.beans.factory.support.BeanDefinitionReader;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 /**
  * @author: markus
@@ -12,5 +14,9 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 public class BeanDefinitionRegistryDemo {
     public static void main(String[] args) {
 //        DefaultListableBeanFactory ==> BeanDefinitionRegistry
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+
+
     }
 }

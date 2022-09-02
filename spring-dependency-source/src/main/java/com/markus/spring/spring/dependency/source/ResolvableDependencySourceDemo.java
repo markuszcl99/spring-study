@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.io.Resource;
 
 /**
  * @author: markus
@@ -30,6 +31,8 @@ public class ResolvableDependencySourceDemo {
 
         ResolvableDependencySourceDemo demo = applicationContext.getBean(ResolvableDependencySourceDemo.class);
         System.out.println(demo.helloWorld);
+
+        Resource
 
         applicationContext.close();
 

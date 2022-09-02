@@ -8,5 +8,11 @@
     <import resource="dependency-lookup.xml"/>
     <bean id="userHolder" name="userHolder" class="com.markus.spring.spring.dependency.injection.UserHolder">
         <property name="user" ref="user"/>
+        <property name="users" >
+            <list>
+                <ref bean="user"/>
+                <ref bean="superUser"/>
+            </list>
+        </property>
     </bean>
 </beans>

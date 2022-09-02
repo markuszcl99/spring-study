@@ -14,6 +14,7 @@
 
     <bean id="superUser" class="com.markus.spring.ioc.container.domain.SuperUser" parent="user" primary="true">
         <property name="address" value="北京市朝阳区"/>
+        <property name="age" value="24"/>
     </bean>
 
     <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">

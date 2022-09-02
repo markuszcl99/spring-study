@@ -1,0 +1,49 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--spring bean 元信息配置示例 start-->
+    <bean id="user" name="user,user2" class="com.markus.spring.ioc.container.domain.User">
+        <property name="name" value="markus"/>
+        <property name="age" value="23"/>
+        <property name="city" value="BEIJING"/>
+        <property name="workCities" value="BEIJING,HEZE"/>
+        <property name="lifeCities" value="BEIJING,HEZE"/>
+        <property name="resource" value="classpath:/META-INF/user-config.properties"/>
+    </bean>
+
+    <bean id="superUser" class="com.markus.spring.ioc.container.domain.SuperUser" parent="user" primary="true">
+        <property name="address" value="北京市朝阳区"/>
+    </bean>
+    <!--spring bean 元信息配置示例 end-->
+
+    <bean name="person" class="com.markus.spring.spring.bean.lifecycle.other.bean.Person" init-method="myInit"
+          destroy-method="myDestroy">
+        <property name="id" value="1"/>
+        <property name="name" value="Markus"/>
+        <property name="address" value="北京"/>
+        <property name="iphone" value="155****9507"/>
+    </bean>
+
+
+    <bean name="people" class="com.markus.spring.spring.bean.lifecycle.other.bean.People" autowire="constructor"/>
+<!--    <bean name="people" class="com.markus.spring.spring.bean.lifecycle.other.bean.People">-->
+<!--        <property name="person" ref="person"/>-->
+<!--    </bean>-->
+
+    <bean name="lifeCycleBean" class="com.markus.spring.spring.bean.lifecycle.other.bean.LifeCycleBean">
+        <property name="id" value="1"/>
+        <property name="name" value="markus"/>
+        <property name="address" value="北京"/>
+    </bean>
+
+    <bean name="myBeanFactoryPostProcessor"
+          class="com.markus.spring.spring.bean.lifecycle.other.processor.MyBeanFactoryPostProcessor"/>
+
+    <bean name="myInstantiationAwareBeanPostProcessor"
+          class="com.markus.spring.spring.bean.lifecycle.other.processor.MyInstantiationAwareBeanPostProcessor"/>
+
+    <bean name="myBeanPostProcessor"
+          class="com.markus.spring.spring.bean.lifecycle.other.processor.MyBeanPostProcessor"/>
+
+</beans>
