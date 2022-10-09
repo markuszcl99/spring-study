@@ -14,8 +14,8 @@
         <module>spring-dependency-lookup</module>
         <module>spring-dependency-injection</module>
         <module>spring-dependency-source</module>
-        <module>spring-scope</module>
         <module>spring-bean-lifecycle</module>
+        <module>spring-aop</module>
     </modules>
 
     <properties>
@@ -81,6 +81,13 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webflux</artifactId>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+        </dependency>
+
     </dependencies>
     <build>
 

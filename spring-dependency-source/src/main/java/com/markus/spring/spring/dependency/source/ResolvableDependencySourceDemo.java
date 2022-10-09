@@ -32,7 +32,6 @@ public class ResolvableDependencySourceDemo {
         ResolvableDependencySourceDemo demo = applicationContext.getBean(ResolvableDependencySourceDemo.class);
         System.out.println(demo.helloWorld);
 
-        Resource
 
         applicationContext.close();
 

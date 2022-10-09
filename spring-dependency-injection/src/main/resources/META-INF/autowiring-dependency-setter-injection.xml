@@ -8,8 +8,8 @@
     <import resource="dependency-lookup.xml"/>
     <bean id="userHolder" name="userHolder" class="com.markus.spring.spring.dependency.injection.UserHolder"
           autowire="byType">
-        <!--        autowire="byName" 通过名称注入-->
-        <!--        autowire="byType" 通过类型注入-->
-        <!--        <property name="user" ref="user"/>-->
+<!--                autowire="byName" 通过名称注入-->
+<!--                autowire="byType" 通过类型注入-->
+<!--                <property name="user" ref="user"/>-->
     </bean>
 </beans>

@@ -112,12 +112,12 @@ public class User implements BeanNameAware {
         return user;
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void init(){
         System.out.println("["+beanName+"] Bean 正在初始化...");
     }
 
-    @PreDestroy
+//    @PreDestroy
     public void destroy(){
         System.out.println("["+beanName+"] Bean 正在销毁...");
     }
