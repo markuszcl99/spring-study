@@ -8,7 +8,8 @@ package com.markus.aop;
  * It's my honor to share what I've learned with you!
  */
 public class TestBeanAOP {
-    public void test(){
-        System.out.println("AOP Hello World!");
+    public void test() {
+        System.out.println("【target method】AOP Hello World!");
+        int i = 1 / 0;
     }
 }

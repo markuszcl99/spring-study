@@ -1,5 +1,6 @@
 package com.markus.aop;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 
@@ -13,7 +14,7 @@ import org.aspectj.lang.annotation.*;
 @Aspect
 public class TestBeanAOPAspect {
 
-    @Pointcut("execution(* *.test(..))")
+    @Pointcut(value = "execution(* *.test(..))")
     public void test() {
 
     }
@@ -21,40 +22,52 @@ public class TestBeanAOPAspect {
     /**
      * 切入点执行之前执行
      */
-    @Before("test()")
+    @Before(value = "test()")
     public void before() {
-        System.out.println("before invoke test method!");
+        System.out.println("@Before");
     }
 
     /**
      * 切入点执行之后执行
      */
-    @After("test()")
+    @After(value = "test()")
     public void after() {
-        System.out.println("after invoke test method!");
+        System.out.println("@After");
+    }
+
+    @AfterReturning(value = "test()")
+    public void afterReturning() {
+        System.out.println("@AfterReturning");
+    }
+
+    @AfterThrowing(value = "test()", throwing = "e")
+    public void afterThrowing(JoinPoint jp, Exception e) {
+        System.out.println("@AfterThrowing " + e.getMessage());
     }
 
     /**
      * 切入点环绕执行
-     *  1. 切入点执行前
-     *  2. 切入点执行后
-     *  3. 切入点异常后
+     * 1. 切入点执行前
+     * 2. 切入点执行后
+     * 3. 切入点异常后
      *
      * @param point
      * @return
      */
-    @Around("test()")
+    @Around(value = "test()")
     public Object around(ProceedingJoinPoint point) {
-        System.out.println("before");
+        System.out.println("【Around】before");
         Object o = null;
         try {
             o = point.proceed();
+            System.out.println("【Around】after");
         } catch (Throwable e) {
-            System.out.println("exception");
+            // 因为这里有异常捕捉，所以@AfterThrowing注解不生效
+            System.out.println("【Around】exception");
 //            e.printStackTrace();
+        } finally {
+            System.out.println("【Around】finally");
         }
-        System.out.println("after");
         return o;
     }
-
 }
