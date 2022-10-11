@@ -7,6 +7,6 @@
 
     <aop:aspectj-autoproxy/>
 
-    <bean id="testBeanAOP" class="com.markus.aop.TestBeanAOP"/>
-    <bean class="com.markus.aop.TestBeanAOPAspect"/>
+    <bean id="testBeanAOP" class="com.markus.aop.overview.TestBeanAOP"/>
+    <bean class="com.markus.aop.overview.TestBeanAOPAspect"/>
 </beans>
