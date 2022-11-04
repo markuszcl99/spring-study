@@ -23,4 +23,9 @@ public class ProxyEchoService implements EchoService {
         System.out.println("echo 方法执行的实现: " + constTime + " ms.");
         return result;
     }
+
+    @Override
+    public String echoWithException(String message) throws NullPointerException {
+        return null;
+    }
 }

@@ -14,4 +14,9 @@ public class DefaultEchoService implements EchoService {
         System.out.println(result);
         return result;
     }
+
+    @Override
+    public String echoWithException(String message) throws NullPointerException {
+        return null;
+    }
 }

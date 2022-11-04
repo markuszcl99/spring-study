@@ -9,4 +9,6 @@ package com.markus.aop.overview;
  */
 public interface EchoService {
     public String echo(String message);
+
+    public String echoWithException(String message) throws NullPointerException;
 }
