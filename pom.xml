@@ -16,6 +16,7 @@
         <module>spring-dependency-source</module>
         <module>spring-bean-lifecycle</module>
         <module>spring-aop</module>
+        <module>spring-aop-feature</module>
     </modules>
 
     <properties>

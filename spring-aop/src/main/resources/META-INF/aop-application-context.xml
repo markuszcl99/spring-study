@@ -6,12 +6,4 @@
         http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <aop:aspectj-autoproxy/>
-
-    <bean id="testBeanAOP" class="com.markus.aop.overview.TestBeanAOP"/>
-    <bean class="com.markus.aop.overview.TestBeanAOPAspect"/>
-
-    <bean id="dao" class="com.markus.aop.overview.Dao">
-        <property name="id" value="1"/>
-        <property name="name" value="markus"/>
-    </bean>
 </beans>
