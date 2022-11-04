@@ -1,8 +1,8 @@
-package com.markus.aop;
+package com.markus.aop.overview;
 
 /**
  * @author: markus
- * @date: 2022/10/12 12:13 AM
+ * @date: 2022/11/1 10:38 PM
  * @Description: 默认实现
  * @Blog: http://markuszhang.com
  * It's my honor to share what I've learned with you!
@@ -10,7 +10,8 @@ package com.markus.aop;
 public class DefaultEchoService implements EchoService {
     @Override
     public String echo(String message) {
-        System.out.println("Target Method...");
-        return "【echo】" + message;
+        String result = "[echo] " + message;
+        System.out.println(result);
+        return result;
     }
 }

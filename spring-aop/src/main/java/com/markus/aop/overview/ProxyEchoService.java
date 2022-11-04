@@ -1,17 +1,15 @@
 package com.markus.aop.overview;
 
-import com.markus.aop.EchoService;
-
 /**
  * @author: markus
- * @date: 2022/10/12 12:14 AM
- * @Description: 代理对象
+ * @date: 2022/11/1 10:40 PM
+ * @Description: EchoService代理类
  * @Blog: http://markuszhang.com
  * It's my honor to share what I've learned with you!
  */
 public class ProxyEchoService implements EchoService {
 
-    private EchoService echoService;
+    private final EchoService echoService;
 
     public ProxyEchoService(EchoService echoService) {
         this.echoService = echoService;
@@ -19,8 +17,10 @@ public class ProxyEchoService implements EchoService {
 
     @Override
     public String echo(String message) {
-        String result = "【proxy】" + message;
-        System.out.println(result);
+        long startTime = System.currentTimeMillis();
+        String result = echoService.echo(message);
+        long constTime = System.currentTimeMillis() - startTime;
+        System.out.println("echo 方法执行的实现: " + constTime + " ms.");
         return result;
     }
 }
