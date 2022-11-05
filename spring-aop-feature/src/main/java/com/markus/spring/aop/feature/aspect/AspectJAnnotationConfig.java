@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @author: markus
  * @date: 2022/11/4 11:46 PM
  * @Description: AspectJ 注解 配置
+ * 使用案例可以参考spring官方文档：https://docs.spring.io/spring-framework/docs/5.2.19.RELEASE/spring-framework-reference/core.html#aop-advice
  * @Blog: http://markuszhang.com
  * It's my honor to share what I've learned with you!
  */
@@ -24,12 +25,13 @@ public class AspectJAnnotationConfig {
      * param-pattern 方法的参数类型(必填，空表示无参数)
      * throws-pattern 方法抛出的异常类型(可选)
      */
-    @Pointcut(value = "execution(public * *(..))")
+//    @Pointcut(value = "execution(public * *(..))")
+    @Pointcut(value = "within(com.markus.aop.overview.*)")
     public void pointcut() {
 
     }
 
-    @Before("pointcut()")
+    @Before(value = "pointcut()")
     public void before() {
         System.out.println("@Before");
     }
@@ -37,6 +39,14 @@ public class AspectJAnnotationConfig {
     @After("pointcut()")
     public void after() {
         System.out.println("@After");
+    }
+
+    @AfterReturning(
+            value = "pointcut()",
+            returning = "retVal"
+    )
+    public void afterWithRetValue(Object retVal) {
+        System.out.printf("@AfterReturning its retValue is %s\n", retVal);
     }
 
     @AfterReturning("pointcut()")
