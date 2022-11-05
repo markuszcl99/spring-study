@@ -21,6 +21,7 @@
     </bean>
 
 
+    <!--自动代理 更多的时间是去配置Advisor以及Pointcut，扩展性相比BeanNameAutoProxyCreator较强-->
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
         <property name="advisorBeanNamePrefix" value="echo*"/>
     </bean>
