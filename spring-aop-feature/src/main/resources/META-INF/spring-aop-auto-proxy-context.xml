@@ -1,0 +1,35 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="echoService" class="com.markus.aop.overview.DefaultEchoService"/>
+
+    <bean id="echoServiceMethodInterceptor"
+          class="com.markus.spring.aop.feature.interceptor.EchoServiceMethodInterceptor"/>
+
+    <bean id="echoServicePointcut" class="com.markus.spring.aop.feature.pointcut.EchoServicePointcut">
+        <constructor-arg index="0" value="echo"/>
+        <constructor-arg index="1" value="com.markus.aop.overview.EchoService"/>
+    </bean>
+
+    <bean class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <constructor-arg index="0" ref="echoServicePointcut"/>
+        <constructor-arg index="1" ref="echoServiceMethodInterceptor"/>
+    </bean>
+
+
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+        <property name="advisorBeanNamePrefix" value="echo*"/>
+    </bean>
+
+    <!--主动去配置，不太理想-->
+    <!--    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">-->
+    <!--        <property name="beanNames" value="*"/> &lt;!&ndash;代理所有对象&ndash;&gt;-->
+    <!--        <property name="interceptorNames"> &lt;!&ndash;设置拦截器&ndash;&gt;-->
+    <!--            <value>echoServiceMethodInterceptor</value>-->
+    <!--        </property>-->
+    <!--    </bean>-->
+</beans>
