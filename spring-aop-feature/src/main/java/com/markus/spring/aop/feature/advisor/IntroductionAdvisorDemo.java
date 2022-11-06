@@ -2,10 +2,13 @@ package com.markus.spring.aop.feature.advisor;
 
 import com.markus.aop.overview.DefaultEchoService;
 import com.markus.aop.overview.EchoService;
+import org.springframework.aop.AfterAdvice;
 import org.springframework.aop.IntroductionInfo;
 import org.springframework.aop.MethodBeforeAdvice;
+import org.springframework.aop.ThrowsAdvice;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.support.DefaultIntroductionAdvisor;
+import sun.reflect.Reflection;
 
 import java.lang.reflect.Method;
 
@@ -17,7 +20,7 @@ import java.lang.reflect.Method;
  * It's my honor to share what I've learned with you!
  */
 public class IntroductionAdvisorDemo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         EchoService echoService = new DefaultEchoService();
 
         ProxyFactory proxyFactory = new ProxyFactory(echoService);
@@ -36,5 +39,15 @@ public class IntroductionAdvisorDemo {
 
         EchoService proxy = (EchoService) proxyFactory.getProxy();
         proxy.echo("Hello World!");
+
+        /*下面是isAssignableFrom的学习*/
+        Class<?> clazz = Class.forName("com.markus.aop.overview.DefaultEchoService");
+        Method[] methods = clazz.getMethods();
+        for (Method method : methods) {
+            System.out.printf("method.getDeclaringClass().isAssignableFrom(EchoService.class) result is %s,method method.getDeclaringClass() is %s,method is %s\n",
+                    method.getDeclaringClass().isAssignableFrom(DefaultEchoService.class), method.getDeclaringClass(), method);
+        }
+
+        System.out.println(MethodBeforeAdvice.class.isAssignableFrom(AfterAdvice.class));
     }
 }
