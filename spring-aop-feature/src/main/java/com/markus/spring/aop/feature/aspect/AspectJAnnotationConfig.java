@@ -31,8 +31,9 @@ public class AspectJAnnotationConfig {
 
     }
 
-    @Before(value = "pointcut()")
-    public void before() {
+    @Before(value = "pointcut() && args(message)", argNames = "message")
+    public void before(String message) {
+        System.out.println(message);/*就是为了调试信息看，可能用处不大，至少以现在掌握的知识来看是*/
         System.out.println("@Before");
     }
 
