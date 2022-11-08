@@ -2,9 +2,12 @@ package com.markus.spring.aop.feature;
 
 import com.markus.aop.overview.DefaultEchoService;
 import com.markus.aop.overview.EchoService;
+import com.markus.spring.aop.feature.pointcut.EchoServicePointcut;
 import org.springframework.aop.AfterReturningAdvice;
 import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
 
 import java.lang.reflect.Method;
 
@@ -37,6 +40,13 @@ public class ProxyFactoryDemo {
                 }
             }
         });
+
+        proxyFactory.addAdvisor(new DefaultPointcutAdvisor(new EchoServicePointcut("echo",EchoService.class),new MethodBeforeAdviceInterceptor(new MethodBeforeAdvice() {
+            @Override
+            public void before(Method method, Object[] args, Object target) throws Throwable {
+
+            }
+        })));
         EchoService proxy = (EchoService) proxyFactory.getProxy();
         proxy.echo("Hello World!");
     }
