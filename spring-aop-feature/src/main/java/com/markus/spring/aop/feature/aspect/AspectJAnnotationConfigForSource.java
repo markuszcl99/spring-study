@@ -41,8 +41,8 @@ public class AspectJAnnotationConfigForSource {
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println("around before");
-        Object result = pjp.proceed();
+        Object result = pjp.proceed();//为了递归调用
         System.out.println("around after");
-        return result;
+        return null;
     }
 }
