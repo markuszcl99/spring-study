@@ -25,13 +25,15 @@ public class AspectJDeclareParentsAnnotationDemo {
         applicationContext.register(AspectJDeclareParentsAnnotationDemo.class, AspectJDeclareParentConfig.class);
         applicationContext.refresh();
         EchoService echoService = applicationContext.getBean(EchoService.class);
-        echoService.echo("Hello World!");
+        UsageTracked usageTracked = (UsageTracked) echoService;
+        usageTracked.echoMethodInvokeCount();// print 1
+        echoService.echo("Hello World!"); // print 2 and [echo] Hello World
 
         AopService aopService = applicationContext.getBean(AopService.class);
         aopService.hello();
 
         //加上AopService之后，容器中的UsageTracked实例就变为两个了：EchoService、AopService
-        UsageTracked usageTracked = applicationContext.getBean("echoService", UsageTracked.class);
+//        UsageTracked usageTracked = applicationContext.getBean("echoService", UsageTracked.class);
 //        System.out.println("echoService == usageTracked : " + (echoService == usageTracked));
 
     }
