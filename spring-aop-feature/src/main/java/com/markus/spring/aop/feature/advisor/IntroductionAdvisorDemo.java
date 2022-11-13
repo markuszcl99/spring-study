@@ -2,6 +2,7 @@ package com.markus.spring.aop.feature.advisor;
 
 import com.markus.aop.overview.DefaultEchoService;
 import com.markus.aop.overview.EchoService;
+import com.markus.spring.aop.feature.introduction.UsageTracked;
 import org.springframework.aop.AfterAdvice;
 import org.springframework.aop.IntroductionInfo;
 import org.springframework.aop.MethodBeforeAdvice;
@@ -32,13 +33,16 @@ public class IntroductionAdvisorDemo {
         }, new IntroductionInfo() {
             @Override
             public Class<?>[] getInterfaces() {
-                return new Class[]{EchoService.class};// 在这里指定匹配类
+                return new Class[]{EchoService.class, UsageTracked.class};// 在这里指定匹配类
             }
         });
         proxyFactory.addAdvisor(introductionAdvisor);
 
         EchoService proxy = (EchoService) proxyFactory.getProxy();
         proxy.echo("Hello World!");
+        UsageTracked usageTracked = (UsageTracked) proxyFactory.getProxy();
+        /*这里会报错，因为目标对象(被代理对象)并没有这个方法*/
+//        usageTracked.echoMethodInvokeCount();
 
         /*下面是isAssignableFrom的学习*/
         Class<?> clazz = Class.forName("com.markus.aop.overview.DefaultEchoService");
