@@ -17,6 +17,7 @@
         <module>spring-bean-lifecycle</module>
         <module>spring-aop</module>
         <module>spring-aop-feature</module>
+        <module>spring-doc</module>
     </modules>
 
     <properties>
