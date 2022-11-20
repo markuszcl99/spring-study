@@ -3,6 +3,7 @@ package com.markus.spring.aop.feature.advisor;
 import com.markus.aop.overview.DefaultEchoService;
 import com.markus.aop.overview.EchoService;
 import com.markus.spring.aop.feature.introduction.UsageTracked;
+import com.markus.spring.aop.feature.introduction.support.DefaultUsageTracked;
 import org.springframework.aop.AfterAdvice;
 import org.springframework.aop.IntroductionInfo;
 import org.springframework.aop.MethodBeforeAdvice;
@@ -22,9 +23,10 @@ import java.lang.reflect.Method;
  */
 public class IntroductionAdvisorDemo {
     public static void main(String[] args) throws ClassNotFoundException {
-        EchoService echoService = new DefaultEchoService();
+//        EchoService echoService = new DefaultEchoService();
+        UsageTracked usageTracked = new DefaultUsageTracked();
 
-        ProxyFactory proxyFactory = new ProxyFactory(echoService);
+        ProxyFactory proxyFactory = new ProxyFactory(usageTracked);
         DefaultIntroductionAdvisor introductionAdvisor = new DefaultIntroductionAdvisor(new MethodBeforeAdvice() {
             @Override
             public void before(Method method, Object[] args, Object target) throws Throwable {
@@ -40,9 +42,8 @@ public class IntroductionAdvisorDemo {
 
         EchoService proxy = (EchoService) proxyFactory.getProxy();
         proxy.echo("Hello World!");
-        UsageTracked usageTracked = (UsageTracked) proxyFactory.getProxy();
-        /*这里会报错，因为目标对象(被代理对象)并没有这个方法*/
-//        usageTracked.echoMethodInvokeCount();
+        UsageTracked proxyUsageTracked = (UsageTracked) proxyFactory.getProxy();
+        proxyUsageTracked.echoMethodInvokeCount();
 
         /*下面是isAssignableFrom的学习*/
         Class<?> clazz = Class.forName("com.markus.aop.overview.DefaultEchoService");
