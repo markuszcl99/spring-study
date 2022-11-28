@@ -9,7 +9,7 @@ import com.markus.aop.overview.annotation.EchoInterface;
  * @Blog: http://markuszhang.com
  * It's my honor to share what I've learned with you!
  */
-@EchoInterface // 用于pointcut @target @args使用
+//@EchoInterface // 用于pointcut @target @args使用
 public interface EchoService {
     public String echo(String message);
 

@@ -12,6 +12,7 @@ import java.lang.reflect.Method;
  * @Blog: http://markuszhang.com
  * It's my honor to share what I've learned with you!
  */
+@EchoInterface
 public class DefaultEchoService implements EchoService, InvocationHandler {
     @Override
     public String echo(String message) {
