@@ -2,7 +2,6 @@ package com.markus.spring.aop.feature;
 
 import com.markus.aop.overview.DefaultEchoService;
 import com.markus.aop.overview.EchoService;
-import com.markus.spring.aop.feature.aspect.AspectAtTargetConfig;
 import com.markus.spring.aop.feature.aspect.AspectAtWithConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -16,11 +15,11 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * It's my honor to share what I've learned with you!
  */
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-public class AspectJAtTargetAnnotationPointcutDemo {
+public class AspectJAtTargetAndAtWithinAnnotationPointcutDemo {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-//        context.register(AspectJAtTargetAnnotationPointcutDemo.class, AspectAtTargetConfig.class);
-        context.register(AspectJAtTargetAnnotationPointcutDemo.class, AspectAtWithConfig.class);
+//        context.register(AspectJAtTargetAndAtWithinAnnotationPointcutDemo.class, AspectAtTargetConfig.class);
+        context.register(AspectJAtTargetAndAtWithinAnnotationPointcutDemo.class, AspectAtWithConfig.class);
         context.refresh();
 
         EchoService echoService = context.getBean(EchoService.class);
