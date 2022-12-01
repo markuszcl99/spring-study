@@ -35,7 +35,7 @@ public class AspectJPointcutConfig {
      * 限制对连接点的匹配(使用Spring AOP时方法的执行)，其中bean引用(Spring AOP代理)是给定类型的实例。
      * this更常用于绑定形式，表达式需要指定具体的类型，不能用通配符
      */
-    @Pointcut(value = "this(com.markus.aop.overview.DefaultEchoService)")
+    @Pointcut(value = "this(com.markus.aop.overview.EchoService)")
     public void thisPointcut() {
     }
 
@@ -44,7 +44,7 @@ public class AspectJPointcutConfig {
      * 限制与连接点的匹配(使用Spring AOP时方法的执行)，其中目标对象(被代理的应用程序对象)是给定类型的实例。
      * target更常用于绑定形式，表达式需要指定具体的类型，不能使用通配符
      */
-    @Pointcut(value = "target(com.markus.aop.overview.EchoService)")
+    @Pointcut(value = "target(com.markus.aop.overview.DefaultEchoService)")
     public void targetPointcut() {
     }
 
