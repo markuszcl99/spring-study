@@ -18,6 +18,7 @@
         <module>spring-aop</module>
         <module>spring-aop-feature</module>
         <module>spring-doc</module>
+        <module>spring-annotation</module>
     </modules>
 
     <properties>
