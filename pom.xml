@@ -19,6 +19,8 @@
         <module>spring-aop-feature</module>
         <module>spring-doc</module>
         <module>spring-annotation</module>
+        <module>spring-conversion</module>
+        <module>spring-event</module>
     </modules>
 
     <properties>
