@@ -33,7 +33,7 @@ public class AsyncEventHandleDemo {
             }
         });
 
-        // 1. 容器刷新
+        // 1. 容器刷新阶段
         context.refresh();
 
         // 2. 获取事件广播器
