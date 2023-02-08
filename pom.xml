@@ -21,6 +21,7 @@
         <module>spring-annotation</module>
         <module>spring-conversion</module>
         <module>spring-event</module>
+        <module>spring-article-output</module>
     </modules>
 
     <properties>
