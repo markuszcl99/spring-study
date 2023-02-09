@@ -63,6 +63,7 @@ public class AutowiredAnnotationDependencyInjectionDemo {
         System.out.println("demo.userFromMethod : " +demo.userFromMethod);
         System.out.println("demo.userFromCustomAnnotation : " +demo.userFromCustomAnnotation);
         context.close();
+        //
     }
 
 }
