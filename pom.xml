@@ -22,6 +22,7 @@
         <module>spring-conversion</module>
         <module>spring-event</module>
         <module>spring-article-output</module>
+        <module>spring-jdbc</module>
     </modules>
 
     <properties>
