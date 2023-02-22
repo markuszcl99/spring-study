@@ -1,0 +1,29 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--数据库-->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <!--数据驱动-->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <!--数据库连接-->
+        <property name="url" value="jdbc:mysql://localhost:3306/spring"/>
+        <!--用户名-->
+        <property name="username" value="root"/>
+        <!--密码-->
+        <property name="password" value="root"/>
+        <!--连接池初始值-->
+        <property name="initialSize" value="1"/>
+        <!--连接池最大值-->
+        <property name="maxTotal" value="300"/>
+        <!--最大空闲值 经过高峰时间后，连接池可以慢慢将已经用不到的连接慢慢释放一部分，一直减少到maxIdle为止-->
+        <property name="maxIdle" value="2"/>
+        <!--最小空闲值 面对洪峰时，避免来不及申请资源，提前预申请一些连接-->
+        <property name="minIdle" value="1"/>
+    </bean>
+
+    <!--业务Bean-->
+    <bean id="userService" class="com.markus.spring.jdbc.UserServiceImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+</beans>
